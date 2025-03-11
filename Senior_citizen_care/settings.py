@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--lx_+22gymz38sl-tlrw#738f2xug0mau7i+=rihsed5m$i1ns
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'Senior_citizen_care.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,6 +132,7 @@ RAZORPAY_KEY_ID = 'rzp_test_Yth6NFWjeeRvSw'
 RAZORPAY_KEY_SECRET = 'eNEhfjXVCd9Wby7lZ48MaKbU'
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
