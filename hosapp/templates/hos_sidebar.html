@@ -1,0 +1,44 @@
+{% load static %}
+<div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Main Menu</li>
+                    <li><a class="" href="{% url 'hos_home' %}" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">{{request.session.Hospitalname}}</span></a>
+
+                    </li>
+                    <li class="nav-label">Doctor</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-app-store"></i><span class="nav-text">Details</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'doctor' %}">Profile</a></li>
+                            <li><a class="has-arrow" href="#" aria-expanded="false">Display</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{% url 'doctor_display' %}">edit</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-label">Appoinments</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-world-2"></i><span class="nav-text">Bookings</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'appoinment_book' %}">View</a></li>
+                            <li><a href="{% url 'view_success_prescriptions' %}">Payment Status</a></li>
+
+
+                        </ul>
+                    </li>
+
+
+
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>

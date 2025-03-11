@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% include 'groc_header.html' %}
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+{% include 'groc_sidebar.html' %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+{% block content %}
+ <!--**********************************
+            Content body start
+        ***********************************-->
+          <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+
+                    </div>
+
+                </div>
+                <!-- row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Order Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Order No</th>
+                                                <th>Product & quantity</th>
+                                                <th>Price</th>
+
+                                                <th>Name & Address</th>
+                                                <th>Contact No</th>
+                                                <th>Email</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in order reversed %}
+                                            <tr>
+                                                <td>{{i.id}}</td>
+                                                <td>{{i.cart}}</td>
+                                                <td>{{i.cart.total_price}}</td>
+                                                <td>{{i.name}},
+                                                {{i.state}},{{i.address}},{{i.town}},{{i.zip_code}}</td>
+                                                <td>{{i.phone}}</td>
+                                                <td>{{i.email}}</td>
+
+
+
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+{% endblock %}
+
+
+{% include 'groc_footer.html' %}
+
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+<title>Invoice - Bootdey.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    	body{
+background:#eee;
+margin-top:20px;
+}
+.text-danger strong {
+        	color: #9f181c;
+		}
+		.receipt-main {
+			background: #ffffff none repeat scroll 0 0;
+			border-bottom: 12px solid #333333;
+			border-top: 12px solid #9f181c;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			padding: 40px 30px !important;
+			position: relative;
+			box-shadow: 0 1px 21px #acacac;
+			color: #333333;
+			font-family: open sans;
+		}
+		.receipt-main p {
+			color: #333333;
+			font-family: open sans;
+			line-height: 1.42857;
+		}
+		.receipt-footer h1 {
+			font-size: 15px;
+			font-weight: 400 !important;
+			margin: 0 !important;
+		}
+		.receipt-main::after {
+			background: #414143 none repeat scroll 0 0;
+			content: "";
+			height: 5px;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: -13px;
+		}
+		.receipt-main thead {
+			background: #414143 none repeat scroll 0 0;
+		}
+		.receipt-main thead th {
+			color:#fff;
+		}
+		.receipt-right h5 {
+			font-size: 16px;
+			font-weight: bold;
+			margin: 0 0 7px 0;
+		}
+		.receipt-right p {
+			font-size: 12px;
+			margin: 0px;
+		}
+		.receipt-right p i {
+			text-align: center;
+			width: 18px;
+		}
+		.receipt-main td {
+			padding: 9px 20px !important;
+		}
+		.receipt-main th {
+			padding: 13px 20px !important;
+		}
+		.receipt-main td {
+			font-size: 13px;
+			font-weight: initial !important;
+		}
+		.receipt-main td p:last-child {
+			margin: 0;
+			padding: 0;
+		}
+		.receipt-main td h2 {
+			font-size: 20px;
+			font-weight: 900;
+			margin: 0;
+			text-transform: uppercase;
+		}
+		.receipt-header-mid .receipt-left h1 {
+			font-weight: 100;
+			margin: 34px 0 0;
+			text-align: right;
+			text-transform: uppercase;
+		}
+		.receipt-header-mid {
+			margin: 24px 0;
+			overflow: hidden;
+		}
+
+		#container {
+			background-color: #dcdcdc;
+		}
+    </style>
+</head>
+<body>
+<div class="col-md-12">
+<div class="row">
+<div class="receipt-main col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+<div class="row">
+<div class="receipt-header">
+<div class="col-xs-6 col-sm-6 col-md-6">
+<div class="receipt-left">
+<img class="img-responsive" alt="iamgurdeeposahan" src="https://bootdey.com/img/Content/avatar/avatar6.png" style="width: 71px; border-radius: 43px;">
+</div>
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 text-right">
+<div class="receipt-right">
+<h5>Sunrise</h5>
+
+<p>INDIA<i class="fa fa-location-arrow"></i></p>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="receipt-header receipt-header-mid">
+<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+<div class="receipt-right">
+<h5>{{ booking.date }} </h5>
+
+
+</div>
+</div>
+<div class="col-xs-4 col-sm-4 col-md-4">
+<div class="receipt-left">
+<h3>INVOICE #{{booking.token_no}}</h3>
+</div>
+</div>
+</div>
+</div>
+<div>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Description</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="col-md-9">Consulted Doctor:</td>
+<td class="col-md-3"><i class="fa fa-inr"></i>Dr Sreerag S</td>
+</tr>
+<tr>
+<td class="col-md-9">Guardian: </td>
+<td class="col-md-3"><i class="fa fa-inr"></i>{{ booking.user_name }}</td>
+</tr>
+<tr>
+<td class="col-md-9">Patient Name:</td>
+<td class="col-md-3"><i class="fa fa-inr"></i> {{ booking.patient_name }}</td>
+</tr>
+<tr>
+<td class="text-right"><h2><strong>Total: </strong></h2></td>
+<td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i>{{ booking.total_amount }}</strong></h2></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<div class="row">
+<div class="receipt-header receipt-header-mid receipt-footer">
+<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+<div style="margin-left:530px;">
+<!--    <a href=""><button type="button" class="btn btn-primary">Pay Now</button></a><br><br>-->
+     <button id="rzp-button1" onclick="handlePayment()">Pay</button>
+    <a href="{% url 'view_drbill' %}"><button type="button" class="btn btn-secondary">Cancel</button></a>
+
+</div>
+</div>
+<div class="col-xs-4 col-sm-4 col-md-4">
+<div class="receipt-left">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"></script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    var totalAmount = "{{ total_amount }}";
+
+function handlePayment() {
+    // Fetch the booking ID from your backend or use a hidden input field in your form
+    var bookingId = 123; // Example booking ID, replace with actual value
+
+    // Fetch the order ID from your backend or use a hidden input field in your form
+    var orderId = "{{ payment.id }}"; // Replace with actual value
+
+    var options = {
+        key: 'rzp_test_Yth6NFWjeeRvSw', // Your Razorpay test key
+        amount: totalAmount * 100,
+        currency: 'INR',
+        name: 'Senior_citizen_care',
+        description: 'A Wild Sheep Chase is the third novel by Japanese author Haruki Murakami',
+        image: 'https://example.com/your_logo.jpg',
+        order_id: orderId,
+        prefill: {
+            name: 'Gaurav Kumar',
+            email: 'gaurav.kumar@example.com'
+        },
+        theme: {
+            color: 'blue'
+        },
+        handler: function (response) {
+            // Handle the Razorpay payment response
+            if (response.razorpay_payment_id) {
+                // Payment successful, redirect to another page
+                window.location.href = 'http://127.0.0.1:8000/clinicpg/';
+            } else {
+                // Payment failed or was cancelled
+                alert('Payment failed or cancelled');
+            }
+        }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+}
+
+</script>
+
+
+
+</body>
+</html>

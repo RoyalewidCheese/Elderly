@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% include 'hos_header.html' %}
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+{% include 'hos_sidebar.html' %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+{% block content %}
+ <!--**********************************
+            Content body start
+        ***********************************-->
+      <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+
+                    </div>
+
+                </div>
+                <!-- row -->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Token No</th>
+                                                <th>Date</th>
+                                                <th>Patient Name</th>
+
+                                                <th>Payment Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in success_prescriptions reversed %}
+                                            <tr>
+                                                <td>{{i.id}}</td>
+                                                <td>{{i.date}}</td>
+
+                                                <td>{{i.patient_name}}</td>
+
+                                                <td>{{i.status}}</td>
+
+
+
+
+<!--                                                <a href="">-->
+<!--                                                  <button type="submit" class="btn btn-danger">Delete</button>-->
+<!--                                               </a>-->
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Content body end
+        ***********************************-->
+{% endblock %}
+
+
+{% include 'hos_footer.html' %}
+
+</html>

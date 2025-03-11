@@ -1,0 +1,63 @@
+{% extends 'grocery_home.html' %}
+{% block content %}
+ <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Hi, welcome back!</h4>
+                            <span class="ml-1">Store_Details</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+<!--                        <ol class="breadcrumb">-->
+<!--                            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>-->
+<!--                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Element</a></li>-->
+<!--                        </ol>-->
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Store Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="post" action="{% url 'store_save' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label>STORE NAME</label>
+                                            <input type="text" class="form-control input-default " placeholder="name" name="name" value="{{request.session.Groceryname}}" readonly>
+                                             <label>MOBILE</label>
+                                            <input type="text" class="form-control input-rounded" placeholder="mobile" name="mobile">
+                                            <label>EMAIL</label>
+                                            <input type="text" class="form-control input-rounded" name="mail" placeholder="email">
+                                            <label>LOCATION</label>
+                                            <input type="text" class="form-control input-rounded" placeholder="location" name="location">
+                                             <label>DESCRIPTION</label>
+                                            <textarea class="form-control input-rounded" placeholder="description" name="dec">
+                                            </textarea>
+                                            <label>UPLOAD IMAGE</label>
+                                            <input type="file" class="form-control input-rounded" placeholder=" " name="image">
+                                        </div>
+                                        <div class="col-12">
+                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+{% endblock %}
+
+

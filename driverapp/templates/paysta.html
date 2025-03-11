@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% include 'header.html' %}
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+{% include 'sidebar.html' %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+{% block content %}
+
+  <div class="content-body">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Bookings</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered verticle-middle table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Pickup</th>
+                                                <th scope="col">Destination</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Time</th>
+                                                <th scope="col">Amount</th>
+                                                <th scope="col">Payment Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in accepted_bookings reversed %}
+                                            <tr>
+                                                <td>{{i.FirstName}}</td>
+                                                <td>
+                                                    {{i.PickupLocation}}
+                                                </td>
+                                                <td>{{i.DestinationLocation}}</td>
+                                                <td>{{i.Date}}
+                                                </td>
+                                                <td>
+                                                    {{i.Time}}
+
+                                                </td>
+                                                <td>{{i.total_amount}}</td>
+                                                <td>{{i.payment_status}}</td>
+
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+  {% endblock %}
+
+{% include 'footer.html' %}
+
+</body>
+
+</html>

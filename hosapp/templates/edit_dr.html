@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+{% include 'hos_header.html' %}
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+{% include 'hos_sidebar.html' %}
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+{% block content %}
+ <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+<!--                        <ol class="breadcrumb">-->
+<!--                            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>-->
+<!--                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Element</a></li>-->
+<!--                        </ol>-->
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-xl-12 col-xxl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Doctor_Details</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form method="post" action="{% url 'dr_update' d_id=drt.id %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label>NAME</label>
+                                            <input type="text" class="form-control input-default " placeholder="doctorname" name="doctorname" value="{{drt.name}}">
+                                            <label>DEPARTMENT</label>
+                                            <input type="text" class="form-control input-default " placeholder="department" name="department" value="{{drt.department}}">
+                                            <label>QUALIFICATION</label>
+                                            <input type="text" class="form-control input-default " placeholder="qualification" name="qualification" value="{{drt.qualification}}" >
+
+                                            <label>UPLOAD IMAGE</label>
+                                            <img src="{{drt.image.url}}" width="80px" height="80px"><br><br>
+                                            <input type="file" class="form-control input-rounded"  name="image" >
+                                        </div>
+                                        <div class="col-12">
+                                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+{% endblock %}
+
+
+{% include 'hos_footer.html' %}
+
+</html>
